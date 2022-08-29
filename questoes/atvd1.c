@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 void selecao(int vet[], int n){
@@ -8,7 +9,7 @@ void selecao(int vet[], int n){
         menor = i;
         for(int j=i+1; j<n; j++){
             printf("C %d %d\n", menor, j);
-            if(vet[i] > vet[j]){
+            if(vet[menor] > vet[j]){
                 menor = j;
             }
         }
@@ -29,7 +30,7 @@ void selecao(int vet[], int n){
 
 
 void bolha(int vet[], int n){
-    int cont, aux, sent;
+    int cont, aux, sent, led=0;
     sent = n;
     printf("\n");
 
@@ -41,9 +42,13 @@ void bolha(int vet[], int n){
                 vet[i] = vet[i+1];
                 vet[i+1] = aux;
                 printf("T %d %d\n", i, i+1);
+                led = 1;
             }
-           
         }
+        if(led == 0){
+            break;
+        }
+        else led = 1;
         sent--;
         
     }
@@ -52,7 +57,6 @@ void bolha(int vet[], int n){
     for(int i=0; i<n; i++){
         printf("%d ", vet[i]);
     }
-
 }
 
 
@@ -81,6 +85,8 @@ int main(){
             bolha(vet, n);
         }
     }
+
+    free(tipo);
 
     return 0;
 }
