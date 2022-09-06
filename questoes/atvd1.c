@@ -4,7 +4,7 @@
 
 void selecao(int vet[], int n){
     int menor, aux;
-    printf("\n");
+    
     for(int i=0; i<n-1; i++){
         menor = i;
         for(int j=i+1; j<n; j++){
@@ -21,7 +21,7 @@ void selecao(int vet[], int n){
 
         }
     }
-    printf("\n");
+    
     for(int i=0; i<n; i++){
         printf("%d ", vet[i]);
 
@@ -30,30 +30,38 @@ void selecao(int vet[], int n){
 
 
 void bolha(int vet[], int n){
-    int cont, aux, sent, led=0;
-    sent = n;
-    printf("\n");
+    int aux, sent, led;
+    sent = n -1;
 
-    for(cont = 0; cont<n-1; cont++){
-        for(int i=0; i<sent-1; i++){
+    for(int cont = 0; cont<n; cont++){
+
+        led=0;
+
+        for(int i=0; i<sent; i++){
+            /*if(vet[sent-2]==vet[sent-1]){
+                sent--;
+                break;
+            }*/
+            
             printf("C %d %d\n", i, i+1);
             if(vet[i]>vet[i+1]){
                 aux = vet[i];
                 vet[i] = vet[i+1];
                 vet[i+1] = aux;
                 printf("T %d %d\n", i, i+1);
-                led = 1;
-            }
+                led = i;
+                
+            } 
         }
-        if(led == 0){
+        sent = led;
+
+
+        /* if(led == 0){
             break;
         }
-        else led = 1;
-        sent--;
-        
+        else led = 1; */
+        //sent--;
     }
-
-    printf("\n");
     for(int i=0; i<n; i++){
         printf("%d ", vet[i]);
     }
